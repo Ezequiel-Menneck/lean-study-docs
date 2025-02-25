@@ -57,3 +57,26 @@ def twice (f : Nat → Nat) (a : Nat) : Nat :=
   f (f a)
 
 #eval twice (fun x => x + 2) 10
+
+#eval Point.mk 1.4 2.8
+
+structure Point2 where
+  point ::
+  x : Float
+  y : Float
+deriving Repr
+
+#eval Point2.point 3.3 4.4
+
+#eval "one string".append " and another"
+#eval "one string".append (" and another".append " and one more")
+
+#eval String.append "first string " "second one"
+
+def Point.modifyBoth (f : Float -> Float) (p : Point) : Point :=
+  { x := f p.x, y := f p.y }
+
+def fourAndThree : Point :=
+  { x := 4.3, y := 3.4 }
+
+#eval fourAndThree.modifyBoth Float.floor
